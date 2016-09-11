@@ -7,20 +7,21 @@ import { AppService } from '../app.service';
     selector: 'component-group',
     providers: [AppService],
     template: `
-    <div >
+    <div>
         <ul>
-            <li *ngFor="let player of _group.players">
-                {{player.name}}
+            <li *ngFor="let player of group.players">
+                <div>
+                {{player.name}} {{player.health}} {{player.water}}
+                </div>
             </li>
         </ul>
     </div>
     `
 })
 export class ComponentGroup {
-    private _group: Group;
-
+    group: Group = new Group();
     constructor(appService: AppService) {
-        appService.getGroup().then(group => this._group = group);
+        appService.getGroup().then(group => this.group = group);
     }
 
 

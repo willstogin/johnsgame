@@ -8,8 +8,9 @@ export class AppService {
 
 
     getGroup(): Promise<Group> {
-        const player: Player = new Player('jimbob');
-        this.group.addPlayer(player);
+        this.group.addPlayer(new Player('armbar'));
+        this.group.addPlayer(new Player('weekendAtJoes'));
+        this.group.addPlayer(new Player('jimbob'));
         return Promise.resolve(this.group);
     }
 
