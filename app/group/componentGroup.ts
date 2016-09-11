@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { Group } from './group';
+import { AppService } from '../app.service';
+
 
 @Component({
     selector: 'component-group',
+    providers: [AppService],
     template: `
     <div >
         <ul>
@@ -16,8 +19,8 @@ import { Group } from './group';
 export class ComponentGroup {
     private _group: Group;
 
-    constructor(group: Group) {
-        this._group = group;
+    constructor(appService: AppService) {
+        appService.getGroup().then(group => this._group = group);
     }
 
 

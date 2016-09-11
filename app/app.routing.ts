@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   },
   { path: 'group',
     component: ComponentGroup
-}
+  }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
