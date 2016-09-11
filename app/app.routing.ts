@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ComponentZoneCrashsite } from './zone/crashsite/componentZoneCrashsite';
 import { ComponentPlayer } from './player/componentPlayer';
 import { ComponentGroup } from './group/componentGroup';
+import { ComponentEvent } from './event/componentEvent';
+
 
 const appRoutes: Routes = [
   {
@@ -19,6 +21,10 @@ const appRoutes: Routes = [
         component: ComponentZoneCrashsite,
       }
     ]
+  },
+  {
+      path: 'event',
+      component: ComponentEvent
   },
   {
     path: 'player',

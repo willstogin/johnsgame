@@ -3,20 +3,24 @@ import { AppService } from '../app.service';
 import { Event } from './event';
 import { Group } from '../group/group';
 
+
 @Component({
     selector: 'component-event',
     providers: [AppService],
     template: `
     <div>
+        {{event.title}}
         <ul>
-            <li *ngFor="let choice of event.choice">
+            <li *ngFor="let choice of event.choices">
                 <div>
-
+                    <component-choice [title]='choice.title'></component-choice>
                 </div>
             </li>
         </ul>
     </div>
     `
+
+
 })
 export class ComponentEvent {
     group: Group = new Group();
