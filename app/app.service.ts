@@ -63,6 +63,16 @@ export class AppService {
         return Promise.resolve(false);
     }
 
+    // Changes all the players of the first group to the second group
+    // WARNING: This function is not safe currently
+    // returns: True on full success, false otherwise
+    mergeGroup(g1: Group, g2: Group): Promise<Boolean> {
+        let success: boolean = true;
+        g1.players.forEach(player => {
+            this.joinGroup(player, g2).then(result => success = success && result);
+        });
+        return Promise.resolve(success);
+    }
 
 
     getEvent(g: Group): Promise<Event> {
