@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from '../app.service';
 import { Event } from './event';
+import { Group } from '../group/group';
 
 @Component({
     selector: 'component-event',
@@ -10,7 +11,7 @@ import { Event } from './event';
         <ul>
             <li *ngFor="let choice of event.choice">
                 <div>
-                {{player.name}} {{player.health}} {{player.water}}
+
                 </div>
             </li>
         </ul>
@@ -18,9 +19,10 @@ import { Event } from './event';
     `
 })
 export class ComponentEvent {
-    event: Event = new Event("");
+    group: Group = new Group();
+    event: Event = new Event('');
     constructor(appService: AppService) {
-        appService.getEvent().then(event => this.event = event);
+        appService.getEvent(this.group).then((event: Event) => this.event = event);
     }
 
 
