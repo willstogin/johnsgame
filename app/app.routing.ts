@@ -5,12 +5,18 @@ import { ComponentZoneCrashsite } from './zone/componentZoneCrashsite';
 import { ComponentPlayer } from './player/componentPlayer';
 import { ComponentGroup } from './group/componentGroup';
 import { ComponentEvent } from './event/componentEvent';
+import { ComponentLogin } from './login/componentLogin';
+
 
 
 const appRoutes: Routes = [
   {
     path: '',
     component: ComponentZoneCrashsite,
+  },
+  {
+      path: 'login',
+      component: ComponentLogin
   },
   {
     path: 'game',

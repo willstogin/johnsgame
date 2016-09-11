@@ -54,7 +54,7 @@ export class AppService {
                 // Group with player found, keep reference to this group
                 removeGroup = group;
             }
-        })
+        });
 
         if (removeGroup != null) {
             removeGroup.splitPlayerFromGroup(player);
@@ -68,7 +68,7 @@ export class AppService {
     // WARNING: This function is not safe currently
     // returns: True on full success, false otherwise
     mergeGroups(g1: Group, g2: Group): Promise<Boolean> {
-        let success: boolean = true;
+        let success = true;
         g1.players.forEach(player => {
             this.joinGroup(player, g2).then(result => success = success && result);
         });
@@ -80,14 +80,14 @@ export class AppService {
         // TODO: look for which zone the group is in
         // TODO: Generate an event for that zone
         const e: Event = new Event('Test');
-        e.choices.push(new Choice("do a barrel roll!"));
-        e.choices.push(new Choice("Don't do a barrel roll!"));
+        e.choices.push(new Choice(`do a barrel roll!`));
+        e.choices.push(new Choice(`Don't do a barrel roll!`));
 
         return Promise.resolve(e);
     }
 
 
-
+    /// below this is temporary
 
 
     group: Group = new Group();
@@ -102,8 +102,15 @@ export class AppService {
 
     // Adds a player to the group if it does not already exist
     // return: true if the player did not already exist, false otherwise
-    addPlayer(player: Player): Promise<boolean> {
-
+    addPlayer(player: string | Player): Promise<boolean> {
+        const group: Group = new Group();
+        if (Player.isPlayer(player)){
+            group.addPlayer(player);
+        } else {
+            const newPlayer: Player = new Player(player);
+            group.addPlayer(newPlayer);
+        }
+        this.groupList.push(group);
 
         return Promise.resolve(false);
     }

@@ -13,7 +13,7 @@ import { Group } from '../group/group';
         <ul>
             <li *ngFor="let choice of event.choices">
                 <div>
-                    <component-choice [title]='choice.title'></component-choice>
+                    <component-choice [choice]='choice'></component-choice>
                 </div>
             </li>
         </ul>

@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
+import { Choice } from './choice';
 
 @Component({
     selector: 'component-choice',
     template: `
-    <button>{{title}}</button>
+    <button (click)="choice.onClick()">{{choice.title}}</button>{{choice.voteCount}}
     `
 })
 export class ComponentChoice {
-    @Input() title: string;
+    @Input() choice: Choice;
+
 
 }

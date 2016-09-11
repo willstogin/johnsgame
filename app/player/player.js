@@ -5,6 +5,9 @@ var Player = (function () {
         this.health = 5;
         this.water = 20;
     }
+    Player.isPlayer = function (player) {
+        return (typeof player !== 'string');
+    };
     Object.defineProperty(Player.prototype, "$name", {
         get: function () {
             return this.name;
