@@ -9,9 +9,6 @@ import { Event } from './event';
     `
 })
 export class ComponentChoice {
-    @Input() title: string;
-    constructor() {
-    }
 
 
 }
