@@ -18,7 +18,7 @@ var ComponentPlayer = (function () {
     ComponentPlayer = __decorate([
         core_1.Component({
             selector: 'component-player',
-            providers: [app_service_1.AppService],
+            providers: [app_service_1.AppService, player_1.Player],
             template: "{{_player.name}} {{_player.health}} {{_player.water}}"
         }), 
         __metadata('design:paramtypes', [player_1.Player])
