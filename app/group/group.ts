@@ -1,11 +1,13 @@
 import { Player } from '../player/player.ts';
+import { ZoneType } from '../zone/zone-type.ts';
 export class Group {
 
     public players: Array<Player>;
+    private zone: ZoneType;
     constructor() {
         this.players = new Array<Player>();
+        this.zone = ZoneType.CRASHSITE;
     }
-
     public addPlayer(player: Player) {
         this.players.push(player);
     }
@@ -24,4 +26,8 @@ export class Group {
         }
         return false;
     }
+    public setZone(zone: ZoneType) {
+        this.zone = zone;
+    }
+
 }
