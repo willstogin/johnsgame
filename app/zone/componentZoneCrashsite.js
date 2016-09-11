@@ -9,15 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var app_service_1 = require('../app.service');
 var ComponentZoneCrashsite = (function () {
-    function ComponentZoneCrashsite() {
+    function ComponentZoneCrashsite(appService) {
+        this.appService = appService;
     }
+    ComponentZoneCrashsite.prototype.getPlayers = function () {
+        var _this = this;
+        this.appService.getPlayerList().then(function (players) { return _this.players = players; });
+    };
+    ComponentZoneCrashsite.prototype.ngOnInit = function () {
+        this.getPlayers();
+    };
     ComponentZoneCrashsite = __decorate([
         core_1.Component({
             selector: 'component-zone-crashsite',
-            template: "<h1>My First Angular 2 App HI MOM</h1>\n               "
+            providers: [app_service_1.AppService],
+            template: "<h1>My First Angular 2 App HI</h1>\n    <h2>Players: {{players}}\n               "
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [app_service_1.AppService])
     ], ComponentZoneCrashsite);
     return ComponentZoneCrashsite;
 }());

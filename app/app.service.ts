@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AppService {
-    getUserList(): string[] {
-        return ["Hi", "mom"]
+    getPlayerList(): Promise<string[]> {
+        return Promise.resolve(["Hi", "mom"]);
     }
 
 }
