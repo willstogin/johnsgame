@@ -9,8 +9,9 @@ import { Group } from '../group/group';
     providers: [AppService],
     template: `
     <div>
+        {{event.title}}
         <ul>
-            <li *ngFor="let choice of event.choice">
+            <li *ngFor="let choice of event.choices">
                 <div>
                     <component-choice [title]='choice.title'></component-choice>
                 </div>
