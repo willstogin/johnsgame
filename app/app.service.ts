@@ -27,9 +27,52 @@ export class AppService {
 
 
     // Group changing methods
-    startNewGroup(player: Player) {
-        // Find which zone the player is in
+    // Returns true on successful new group creation, false otherwise
+    leaveGroup(player: Player): Promise<boolean> {
+        // Find the group
+        this.groupList.forEach(element => {
+            if (element.has(player)) {
+                // Group with player found, get new group
+                const newGroup: Group = element.splitPlayerFromGroup(player);
+                if (newGroup != null) {
+                    // Add new group to the list of groups
+                    this.groupList.push(newGroup);
+                    return Promise.resolve(true);
+                }
+            }
+        });
+        return Promise.resolve(false);
+    }
 
+    // Adds a player to a given group, removing it from the old group
+    // Returns true on success, false otherwise
+    joinGroup(player: Player, newGroup: Group): Promise<boolean> {
+        let removeGroup: Group = null;
+        // Find the group that the player belongs to
+        this.groupList.forEach(group => {
+            if (group.has(player)) {
+                // Group with player found, keep reference to this group
+                removeGroup = group;
+            }
+        })
+
+        if (removeGroup != null) {
+            removeGroup.splitPlayerFromGroup(player);
+            newGroup.addPlayer(player);
+            return Promise.resolve(true);
+        }
+        return Promise.resolve(false);
+    }
+
+    // Changes all the players of the first group to the second group
+    // WARNING: This function is not safe currently
+    // returns: True on full success, false otherwise
+    mergeGroups(g1: Group, g2: Group): Promise<Boolean> {
+        let success: boolean = true;
+        g1.players.forEach(player => {
+            this.joinGroup(player, g2).then(result => success = success && result);
+        });
+        return Promise.resolve(success);
     }
 
 
@@ -42,6 +85,14 @@ export class AppService {
 
         return Promise.resolve(e);
     }
+
+
+
+
+
+
+
+
 
 
 
