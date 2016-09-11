@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
-import { AppService } from '../app.service';
-import { Event } from './event';
+import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'component-event',
+    selector: 'component-choice',
     template: `
     <button>{{title}}</button>
     `
