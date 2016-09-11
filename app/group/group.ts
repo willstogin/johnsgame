@@ -29,5 +29,8 @@ export class Group {
     public setZone(zone: ZoneType) {
         this.zone = zone;
     }
+    public getZone(): ZoneType {
+        return this.zone;
+    }
 
 }
