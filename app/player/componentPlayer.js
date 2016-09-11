@@ -13,7 +13,6 @@ var player_1 = require('./player');
 var app_service_1 = require('../app.service');
 var ComponentPlayer = (function () {
     function ComponentPlayer(player) {
-        this._player = player;
     }
     ComponentPlayer = __decorate([
         core_1.Component({

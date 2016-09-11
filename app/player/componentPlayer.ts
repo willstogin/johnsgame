@@ -10,7 +10,6 @@ import { AppService } from '../app.service';
 export class ComponentPlayer {
     private _player: Player;
     constructor(player: Player) {
-        this._player = player;
     }
 
 }
