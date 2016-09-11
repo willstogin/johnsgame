@@ -24,6 +24,12 @@ export class AppService {
     crashSite: Zone = new Zone(CRASHSITE_LANDMARKS);
 
 
+    // Group changing methods
+    startNewGroup(player: Player) {
+        // Find which zone the player is in
+
+    }
+
 
 
 
