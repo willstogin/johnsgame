@@ -43,6 +43,27 @@ export class AppService {
         return Promise.resolve(false);
     }
 
+    // Adds a player to a given group, removing it from the old group
+    // Returns true on success, false otherwise
+    joinGroup(player: Player, newGroup: Group): Promise<boolean> {
+        let removeGroup: Group = null;
+        // Find the group that the player belongs to
+        this.groupList.forEach(group => {
+            if (group.has(player)) {
+                // Group with player found, keep reference to this group
+                removeGroup = group;
+            }
+        })
+
+        if (removeGroup != null) {
+            removeGroup.splitPlayerFromGroup(player);
+            newGroup.addPlayer(player);
+            return Promise.resolve(true);
+        }
+        return Promise.resolve(false);
+    }
+
+
 
     getEvent(g: Group): Promise<Event> {
         // TODO: look for which zone the group is in
@@ -50,6 +71,14 @@ export class AppService {
         const e: Event = new Event('Test');
         return Promise.resolve(e);
     }
+
+
+
+
+
+
+
+
 
 
 
