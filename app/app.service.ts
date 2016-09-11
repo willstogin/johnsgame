@@ -24,7 +24,7 @@ export class AppService {
     weather: WeatherStates = WeatherStates.CLEAR;
 
     // Zones
-    crashSite: Zone = new Zone(CRASHSITE_LANDMARKS);
+    crashSite: Zone = new Zone(CRASHSITE_LANDMARKS, CRASHSITE_EVENTS);
 
 
     // Group changing methods
