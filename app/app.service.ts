@@ -26,9 +26,21 @@ export class AppService {
 
 
     // Group changing methods
-    startNewGroup(player: Player) {
-        // Find which zone the player is in
-
+    // Returns true on successful new group creation, false otherwise
+    startNewGroup(player: Player): Promise<boolean> {
+        // Find the group
+        this.groupList.forEach(element => {
+            if (element.has(player)) {
+                // Group with player found, get new group
+                const newGroup: Group = element.splitPlayerFromGroup(player);
+                if (newGroup != null) {
+                    // Add new group to the list of groups
+                    this.groupList.push(newGroup);
+                    return Promise.resolve(true);
+                }
+            }
+        });
+        return Promise.resolve(false);
     }
 
 
