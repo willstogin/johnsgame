@@ -3,6 +3,7 @@ import { Player } from './player/player';
 import { Group } from './group/group';
 import { Zone } from './zone/zone';
 import { CRASHSITE_LANDMARKS } from './zone/crashsite/crashsite-landmarks';
+import { CRASHSITE_EVENTS } from './zone/crashsite/crashsite-events';
 import { Event } from './event/event';
 import { Choice } from './event/choice';
 
