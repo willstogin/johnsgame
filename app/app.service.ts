@@ -27,7 +27,7 @@ export class AppService {
 
     // Group changing methods
     // Returns true on successful new group creation, false otherwise
-    startNewGroup(player: Player): Promise<boolean> {
+    leaveGroup(player: Player): Promise<boolean> {
         // Find the group
         this.groupList.forEach(element => {
             if (element.has(player)) {
@@ -66,7 +66,7 @@ export class AppService {
     // Changes all the players of the first group to the second group
     // WARNING: This function is not safe currently
     // returns: True on full success, false otherwise
-    mergeGroup(g1: Group, g2: Group): Promise<Boolean> {
+    mergeGroups(g1: Group, g2: Group): Promise<Boolean> {
         let success: boolean = true;
         g1.players.forEach(player => {
             this.joinGroup(player, g2).then(result => success = success && result);
