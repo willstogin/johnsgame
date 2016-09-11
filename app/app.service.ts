@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Player } from './player/player';
 import { Group } from './group/group';
 import { Zone } from './zone/zone';
-import { CRASHSITE_LANDMARKS } from './zone/crashsite-landmarks';
+import { CRASHSITE_LANDMARKS } from './zone/crashsite/crashsite-landmarks';
 import { Event } from './event/event';
 
 enum WeatherStates {
