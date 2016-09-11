@@ -3,6 +3,7 @@ import { Player } from './player/player';
 import { Group } from './group/group';
 import { Zone } from './zone/zone';
 import { CRASHSITE_LANDMARKS } from './zone/crashsite-landmarks';
+import { Event } from './event/event';
 
 enum WeatherStates {
     CLEAR,          // Default state of the weather
@@ -30,6 +31,13 @@ export class AppService {
 
     }
 
+
+    getEvent(g: Group): Promise<Event> {
+        // TODO: look for which zone the group is in
+        // TODO: Generate an event for that zone
+        const e: Event = new Event("Test");
+        return Promise.resolve(e);
+    }
 
 
 
