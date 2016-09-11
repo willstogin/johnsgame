@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Player} from './player/player';
-import {Group} from './group/group';
+import { Player } from './player/player';
+import { Group } from './group/group';
+import Zone = require('./zone/zone');
 
 enum WeatherStates {
     CLEAR,          // Default state of the weather
@@ -15,6 +16,7 @@ export class AppService {
 
     groupList: Array<Group> = new Array<Group>();
     weather: WeatherStates = WeatherStates.CLEAR;
+
 
 
 
