@@ -8,7 +8,17 @@ import { ComponentGroup } from './group/componentGroup';
 const appRoutes: Routes = [
   {
     path: '',
-    component: ComponentZoneCrashsite
+    component: ComponentZoneCrashsite,
+  },
+  {
+    path: 'game',
+    component: ComponentZoneCrashsite,
+    children: [
+      {
+        path: 'crashsite',
+        component: ComponentZoneCrashsite,
+      }
+    ]
   },
   {
     path: 'player',
