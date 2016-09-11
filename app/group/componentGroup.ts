@@ -20,7 +20,7 @@ export class ComponentGroup {
     private _group: Group;
 
     constructor(appService: AppService) {
-        this._group = appService.getGroup();
+        appService.getGroup().then(group => this._group = group);
     }
 
 

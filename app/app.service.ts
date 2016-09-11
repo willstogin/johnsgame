@@ -8,6 +8,8 @@ export class AppService {
 
 
     getGroup(): Promise<Group> {
+        const player: Player = new Player('jimbob');
+        this.group.addPlayer(player);
         return Promise.resolve(this.group);
     }
 
@@ -16,9 +18,5 @@ export class AppService {
     addPlayer(player: Player): Promise<boolean> {
         return Promise.resolve(false);
     }
-
-
-
-
 
 }
