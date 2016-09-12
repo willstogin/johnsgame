@@ -27,7 +27,7 @@ export class AppService {
     // Zones
     crashSite: Zone = new Zone(CRASHSITE_LANDMARKS, CRASHSITE_EVENTS);
 
-
+    /* ************************** GROUP FUNCTIONS ************************** */
     // Group changing methods
     // Returns true on successful new group creation, false otherwise
     leaveGroup(player: Player): Promise<boolean> {
@@ -78,6 +78,7 @@ export class AppService {
     }
 
 
+    /* ************************** EVENT FUNCTIONS ************************** */
     getEvent(g: Group): Promise<Event> {
         // Get the zone the group is in
         const zone: ZoneType = g.getZone();
@@ -102,10 +103,14 @@ export class AppService {
         return Promise.resolve(e);
     }
 
+    /* *************************** ITEM FUNCTIONS *************************** */
+    // TODO
 
 
 
 
+
+    /* ************************* TESTING FUNCTIONS ************************* */
     group: Group = new Group();
 
 
