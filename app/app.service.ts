@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Player } from './player/player';
 import { Group } from './group/group';
 import { Zone } from './zone/zone';
+import { ZoneType } from './zone/zone-type';
 import { CRASHSITE_LANDMARKS } from './zone/crashsite/crashsite-landmarks';
 import { CRASHSITE_EVENTS } from './zone/crashsite/crashsite-events';
 import { Event } from './event/event';
@@ -78,8 +79,22 @@ export class AppService {
 
 
     getEvent(g: Group): Promise<Event> {
-        // TODO: look for which zone the group is in
-        // TODO: Generate an event for that zone
+        // Get the zone the group is in
+        const zone: ZoneType = g.getZone();
+        // Generate an event for that zone (between 2 and 12)
+        const roll = Math.floor(Math.random() * 10) + 2;
+        let event: Event;
+        switch (zone) {
+            case ZoneType.CRASHSITE:
+                event = this.crashSite.events[roll];
+                break;
+            default:
+                // No default quite yet. That's coming ;)
+        }
+        // Todo: return the event rather than the test event
+
+
+
         const e: Event = new Event('Test');
         e.choices.push(new Choice("do a barrel roll!"));
         e.choices.push(new Choice("Don't do a barrel roll!"));
