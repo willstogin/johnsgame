@@ -81,7 +81,7 @@ export class AppService {
     /* ************************** EVENT FUNCTIONS ************************** */
     getEvent(g: Group): Promise<Event> {
         // Get the zone the group is in
-        const zone: ZoneType = g.getZone();
+        const zone: ZoneType = g.zone;
         // Generate an event for that zone (between 2 and 12)
         const roll = Math.floor(Math.random() * 10) + 2;
         let event: Event;
@@ -118,6 +118,9 @@ export class AppService {
         this.group.addPlayer(new Player('armbar'));
         this.group.addPlayer(new Player('weekendAtJoes'));
         this.group.addPlayer(new Player('jimbob'));
+        this.groupList.map( (grp: Group) => {
+            this.group.addPlayer(grp.players[0]);
+        })
         return Promise.resolve(this.group);
     }
 

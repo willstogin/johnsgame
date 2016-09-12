@@ -19,7 +19,6 @@ import { Player } from '../player/player';
 {{diagnostic}}
     `
 
-
 })
 
 
@@ -34,5 +33,6 @@ export class ComponentLogin {
     private onSubmit(): void {
         this._appService.addPlayer(this.model);
     }
+
     get diagnostic() { return JSON.stringify(this.model); }
 }

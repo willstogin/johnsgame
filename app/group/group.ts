@@ -3,10 +3,10 @@ import { ZoneType } from '../zone/zone-type';
 export class Group {
 
     public players: Array<Player>;
-    private zone: ZoneType;
+    private _zone: ZoneType;
     constructor() {
         this.players = new Array<Player>();
-        this.zone = ZoneType.CRASHSITE;
+        this._zone = ZoneType.CRASHSITE;
     }
     public addPlayer(player: Player) {
         this.players.push(player);
@@ -26,10 +26,10 @@ export class Group {
         }
         return false;
     }
-    public setZone(zone: ZoneType) {
+    public set zone(zone: ZoneType) {
         this.zone = zone;
     }
-    public getZone(): ZoneType {
+    public get zone(): ZoneType {
         return this.zone;
     }
 
