@@ -1,5 +1,5 @@
-import { Player } from '../player/player.ts';
-import { ZoneType } from '../zone/zone-type.ts';
+import { Player } from '../player/player';
+import { ZoneType } from '../zone/zone-type';
 export class Group {
 
     public players: Array<Player>;
