@@ -25,6 +25,9 @@ export class Player {
         this.name = value;
     }
 
+    public toString(): String {
+        return "Player with name: " + this.$name;
+    }
 
 
 }

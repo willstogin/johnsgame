@@ -18,6 +18,9 @@ var Player = (function () {
         enumerable: true,
         configurable: true
     });
+    Player.prototype.toString = function () {
+        return "Player with name: " + this.$name;
+    };
     return Player;
 }());
 exports.Player = Player;

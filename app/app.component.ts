@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
     <router-outlet></router-outlet>
     <component-group></component-group>
 
-
-
     `
 })
 export class AppComponent { }

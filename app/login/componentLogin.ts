@@ -31,6 +31,9 @@ export class ComponentLogin {
     }
 
     private onSubmit(): void {
+        this.model = new Player("MyName");
+        console.log("Model: " + this.model.toString());
+        console.log("submitting");
         this._appService.addPlayer(this.model);
     }
 

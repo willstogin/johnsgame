@@ -127,6 +127,7 @@ export class AppService {
     // Adds a player to the group if it does not already exist
     // return: true if the player did not already exist, false otherwise
     addPlayer(player: string | Player): Promise<boolean> {
+        console.log("Adding player " + player.toString());
         const group: Group = new Group();
         if (Player.isPlayer(player)){
             group.addPlayer(player);
