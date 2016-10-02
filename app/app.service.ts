@@ -121,6 +121,7 @@ export class AppService {
         this.groupList.map( (grp: Group) => {
             this.group.addPlayer(grp.players[0]);
         })
+        this.group = this.group;
         return Promise.resolve(this.group);
     }
 
