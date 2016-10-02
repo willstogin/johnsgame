@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AppService } from '../app.service';
 import { Player } from '../player/player';
+import { Inject } from '@angular/core';
+
 
 
 @Component({
@@ -26,7 +28,7 @@ export class ComponentLogin {
     model = new Player('');
     private _appService: AppService;
 
-    constructor(appService: AppService) {
+    constructor(@Inject(AppService) appService: AppService) {
         this._appService = appService;
     }
 
