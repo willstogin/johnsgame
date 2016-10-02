@@ -6,6 +6,8 @@ import { ComponentPlayer } from './player/componentPlayer';
 import { ComponentGroup } from './group/componentGroup';
 import { ComponentEvent } from './event/componentEvent';
 import { ComponentLogin } from './login/componentLogin';
+import { ComponentPlaceholder } from './placeholder/componentPlaceholder';
+
 
 
 
@@ -36,9 +38,20 @@ const appRoutes: Routes = [
     path: 'player',
     component: ComponentPlayer
   },
-  { path: 'group',
+  {
+    path: 'group',
     component: ComponentGroup
-  }
+  },
+  {
+    path: 'api',
+    component: ComponentPlaceholder,
+    // children: [
+    //   {
+    //     path: 'groups',
+    //     component: ComponentPlaceholder,
+    //   }
+    // ],
+  },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

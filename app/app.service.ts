@@ -7,6 +7,7 @@ import { CRASHSITE_LANDMARKS } from './zone/crashsite/crashsite-landmarks';
 import { CRASHSITE_EVENTS } from './zone/crashsite/crashsite-events';
 import { Event } from './event/event';
 import { Choice } from './event/choice';
+import { Observable, Observer } from 'rxjs/Rx';
 
 enum WeatherStates {
     CLEAR,          // Default state of the weather
@@ -114,7 +115,7 @@ export class AppService {
     group: Group = new Group();
 
 
-    getGroup(): Promise<Group> {
+    getGroup(): Observable<Group> {
         this.group.addPlayer(new Player('armbar'));
         this.group.addPlayer(new Player('weekendAtJoes'));
         this.group.addPlayer(new Player('jimbob'));
@@ -122,7 +123,12 @@ export class AppService {
             this.group.addPlayer(grp.players[0]);
         })
         this.group = this.group;
-        return Promise.resolve(this.group);
+
+        return new Observable<Group>( (observer: Observer<Group>) => {
+            observer.next(this.group);
+            observer.complete();
+        });
+
     }
 
     // Adds a player to the group if it does not already exist
@@ -140,13 +146,4 @@ export class AppService {
 
         return Promise.resolve(false);
     }
-
-
-
-
-
-
-
-
-
 }

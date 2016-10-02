@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Group } from './group';
 import { AppService } from '../app.service';
-
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'component-group',
@@ -18,11 +18,13 @@ import { AppService } from '../app.service';
     </div>
     `
 })
-export class ComponentGroup {
+export class ComponentGroup {    values: number[] = [];
+
     group: Group = new Group();
+
     constructor(appService: AppService) {
-        appService.getGroup().then(group => this.group = group);
+        let subscription = appService.getGroup().subscribe(
+            value => this.group = value
+        );
     }
-
-
 }

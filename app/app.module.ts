@@ -7,6 +7,7 @@ import { ComponentGroup } from './group/componentGroup';
 import { ComponentEvent } from './event/componentEvent';
 import { ComponentChoice } from './event/componentChoice';
 import { ComponentLogin } from './login/componentLogin';
+import { ComponentPlaceholder } from './placeholder/componentPlaceholder';
 import { FormsModule } from '@angular/forms';
 
 
@@ -15,7 +16,16 @@ import { AppComponent }  from './app.component';
 
 @NgModule({
   imports: [ BrowserModule, routing, FormsModule ],
-  declarations: [ AppComponent, ComponentZoneCrashsite, ComponentPlayer, ComponentGroup, ComponentEvent, ComponentChoice, ComponentLogin ],
+  declarations: [
+    AppComponent,
+    ComponentZoneCrashsite,
+    ComponentPlayer,
+    ComponentGroup,
+    ComponentEvent,
+    ComponentChoice,
+    ComponentLogin,
+    ComponentPlaceholder
+    ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
