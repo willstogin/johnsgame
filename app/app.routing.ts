@@ -7,6 +7,7 @@ import { ComponentGroup } from './group/componentGroup';
 import { ComponentEvent } from './event/componentEvent';
 import { ComponentLogin } from './login/componentLogin';
 import { ComponentPlaceholder } from './placeholder/componentPlaceholder';
+import { ComponentParent } from './parent/componentParent';
 
 
 
@@ -44,13 +45,14 @@ const appRoutes: Routes = [
   },
   {
     path: 'api',
-    component: ComponentPlaceholder,
-    // children: [
-    //   {
-    //     path: 'groups',
-    //     component: ComponentPlaceholder,
-    //   }
-    // ],
+    component: ComponentParent,
+    children: [
+      { path: '', component: ComponentPlaceholder, },
+      {
+        path: 'crashsite',
+        component: ComponentPlaceholder,
+      }
+    ]
   },
 ];
 

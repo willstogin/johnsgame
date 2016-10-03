@@ -8,6 +8,7 @@ import { ComponentEvent } from './event/componentEvent';
 import { ComponentChoice } from './event/componentChoice';
 import { ComponentLogin } from './login/componentLogin';
 import { ComponentPlaceholder } from './placeholder/componentPlaceholder';
+import { ComponentParent } from './parent/componentParent';
 import { FormsModule } from '@angular/forms';
 
 
@@ -24,7 +25,8 @@ import { AppComponent }  from './app.component';
     ComponentEvent,
     ComponentChoice,
     ComponentLogin,
-    ComponentPlaceholder
+    ComponentPlaceholder,
+    ComponentParent,
     ],
   bootstrap: [ AppComponent ]
 })
