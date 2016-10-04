@@ -45,7 +45,13 @@ export class ComponentGroup {    values: number[] = [];
 
         console.log(this.groups);
     }
+    private boo: Boolean = true;
       onSubmit() {
-          this.appService.loadGroups();
+          if (this.boo) {
+          this.appService.addPlayer("Hello");
+          } else {
+              this.appService.addPlayer("World");
+          }
+          this.boo = !this.boo;
     }
 }

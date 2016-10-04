@@ -35,22 +35,22 @@ export class AppService {
     private _groupList$: Subject<Group[]> = <Subject<Group[]>> new Subject();
     get groupList$() { return this._groupList$.asObservable(); }
 
-    loadGroups(): Observable<Group[]> {
+    loadGroups() {
     console.log("Getting data");
-    // var res = this.http.get(`${this.baseUrl}/groups`);
+    var res = this.http.get(`${this.baseUrl}/groups`);
     console.log("Got data");
     // console.log(res.map((response: Response) => response.json()));
+    // var gps: Group[] = new Array();
+    // var g: Group = new Group();
+    // g.addPlayer(new Player("Hello"));
+    // g.addPlayer(new Player("World"));
+    // gps.push(g);
+    // this.dataStore.groups.push(g);
+    // this._groupList$.next(this.dataStore.groups);
 
 
 
-    var gps: Group[] = new Array();
-    var g: Group = new Group();
-    g.addPlayer(new Player("Hello"));
-    g.addPlayer(new Player("World"));
-    gps.push(g);
-    this.dataStore.groups.push(g);
-    this._groupList$.next(this.dataStore.groups);
-    return this._groupList$.asObservable();
+
     // res.map(response => response.json()).subscribe(data => {
     //   this.dataStore.groups = data;
     //   console.log("Got some data!" + data);
@@ -183,15 +183,16 @@ export class AppService {
     // Adds a player to the group if it does not already exist
     // return: true if the player did not already exist, false otherwise
     addPlayer(player: string | Player): Promise<boolean> {
-        // console.log("Adding player " + player.toString());
-        // const group: Group = new Group();
-        // if (Player.isPlayer(player)){
-        //     group.addPlayer(player);
-        // } else {
-        //     const newPlayer: Player = new Player(player);
-        //     group.addPlayer(newPlayer);
-        // }
-        // this.groupList.push(group);
+        console.log("Adding player " + player.toString());
+        const group: Group = new Group();
+        if (Player.isPlayer(player)){
+            group.addPlayer(player);
+        } else {
+            group.addPlayer(new Player(player));
+        }
+
+        this.dataStore.groups.push(group);
+        this._groupList$.next(this.dataStore.groups);
 
         return Promise.resolve(false);
     }
