@@ -3,7 +3,7 @@ import { AppService } from '../app.service';
 
 
 @Component({
-    selector: 'component-placeholder',
+    selector: 'component-parent',
     template: `
     <router-outlet></router-outlet>
     `
