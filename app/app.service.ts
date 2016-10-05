@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable, Observer, Subject } from 'rxjs/Rx';
 
 // Custom classes
@@ -36,9 +36,19 @@ export class AppService {
     get groupList$() { return this._groupList$.asObservable(); }
 
     loadGroups() {
-    console.log("Getting data");
-    var res = this.http.get(`${this.baseUrl}/groups`);
-    console.log("Got data");
+    console.log("Getting data from " + `${this.baseUrl}/groups`);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    var res = this.http.get(`${this.baseUrl}/groups`, options)
+        .map((r:Response) => r.json())
+        .subscribe( (data) =>{
+
+        console.log("Data incoming" + data);
+        this.dataStore.groups = data;
+        this._groupList$.next(this.dataStore.groups)});
+        // .catch((error:any) => Observable.throw(error.json().error));
+    console.log("Res is:");
+    console.log(res);
     // console.log(res.map((response: Response) => response.json()));
     // var gps: Group[] = new Array();
     // var g: Group = new Group();

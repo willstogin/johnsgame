@@ -13,10 +13,12 @@ import { Player } from '../player/player';
         <ul>
             <li *ngFor="let g of groups | async">
                 <div>
-                {{g.zone}}
+                <ul>
+                {{g.id}}
                 <li *ngFor="let p of g.players">
-                {{p.name}}
+                {{p}}
                 </li>
+                </ul>
                 </div>
             </li>
         </ul>
@@ -26,16 +28,8 @@ import { Player } from '../player/player';
 export class ComponentGroup {    values: number[] = [];
 
     private groups: Observable<Group[]>;
-    private gps: Group[];
 
     constructor(private appService: AppService) {
-
-        this.gps = new Array();
-        var g: Group = new Group();
-        g.addPlayer(new Player("Hello"));
-        g.addPlayer(new Player("World"));
-        console.log("G zone: " + g.zone);
-        this.gps.push(g);
     }
 
     ngOnInit() {
@@ -47,11 +41,13 @@ export class ComponentGroup {    values: number[] = [];
     }
     private boo: Boolean = true;
       onSubmit() {
-          if (this.boo) {
+        /*   if (this.boo) {
           this.appService.addPlayer("Hello");
           } else {
               this.appService.addPlayer("World");
           }
           this.boo = !this.boo;
+          */
+          this.appService.loadGroups();
     }
 }
